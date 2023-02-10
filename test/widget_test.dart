@@ -2,26 +2,26 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:unit_test_tutorial/util_model.dart';
 
 void main() {
-  Utils myUtil = Utils();
+  Utils myUtils = Utils();
 
   group("Value testing passed", () {
     test("myNumber's initial value equals to 100", () {
-      expect(myUtil.myNumber, 100);
+      expect(myUtils.myNumber, 100);
     });
 
     test("Base Url is Not Empty", () {
-      expect(myUtil.baseUrl.isEmpty, false);
+      expect(myUtils.baseUrl.isEmpty, false);
     });
   });
 
   group("Methods testing", () {
 
     test("isMaxNew method testing", () {
-        expect(myUtil.isMaxNew(50, 10, 0, false), true);
+        expect(myUtils.isMaxNew(50, 10, 0, false), true);
     });
 
     test("string equality testing", () {
-      expect(myUtil.stringEquals("Odil bek", "Odilbek"), true);
+      expect(myUtils.stringEquals("Odil bek", "Odilbek"), true);
     });
 
     group('Group test formatting', () {
@@ -38,7 +38,7 @@ void main() {
     test(
       "Card formatting test",
       () {
-        expect(myUtil.returnCardFormatText("8600312997956567"),
+        expect(myUtils.returnCardFormatText("8600312997956567"),
             "8600 3129 9795 6567");
       },
     );
