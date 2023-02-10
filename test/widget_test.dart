@@ -1,30 +1,46 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:unit_test_tutorial/main.dart';
+import 'package:unit_test_tutorial/util_model.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  Utils myUtil = Utils();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  group("Value testing passed", () {
+    test("myNumber's initial value equals to 100", () {
+      expect(myUtil.myNumber, 100);
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    test("Base Url is Not Empty", () {
+      expect(myUtil.baseUrl.isEmpty, false);
+    });
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  group("Methods testing", () {
+
+    test("isMaxNew method testing", () {
+        expect(myUtil.isMaxNew(50, 10, 0, false), true);
+    });
+
+    test("string equality testing", () {
+      expect(myUtil.stringEquals("Odil bek", "Odilbek"), true);
+    });
+
+    group('Group test formatting', () {
+      test("Test formatting", () {
+        expect(Utils.format(1), "01");
+      });
+      test('Test formatting 2', (){
+        expect(Utils.format(11), "11");
+      });
+      test('Test formatting 3', (){
+        expect(Utils.format(3), "03");
+      });
+    });
+    test(
+      "Card formatting test",
+      () {
+        expect(myUtil.returnCardFormatText("8600312997956567"),
+            "8600 3129 9795 6567");
+      },
+    );
   });
 }
